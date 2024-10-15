@@ -1,0 +1,6 @@
+@Tozaroq.Api_HostAddress = http://localhost:5153
+
+GET {{Tozaroq.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
