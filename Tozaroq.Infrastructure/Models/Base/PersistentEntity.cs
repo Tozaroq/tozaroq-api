@@ -3,6 +3,9 @@ using Tozaroq.Infrastructure.Enums.Base;
 
 namespace Tozaroq.Infrastructure.Models.Base
 {
+    /// <summary>
+    /// implemented classes' objects are never removed from the database, regardless of the circumstances
+    /// </summary>
     public abstract class PersistentEntity : BaseEntity
     {
         [Required]

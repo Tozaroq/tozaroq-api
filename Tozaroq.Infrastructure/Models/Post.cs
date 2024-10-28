@@ -6,13 +6,13 @@ using Tozaroq.Infrastructure.Enums.Posts;
 
 namespace Tozaroq.Infrastructure.Models
 {
-    public class Post : PersistentEntity
+    public class Post : BaseEntity
     {
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
 
-        public PostStatus Status { get; set; }
+        public PostStatus Status { get; set; } = PostStatus.Draft;
 
         public Guid AuthorId { get; set; }
         

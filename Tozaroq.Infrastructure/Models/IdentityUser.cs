@@ -4,7 +4,7 @@ using Tozaroq.Infrastructure.Models.Base;
 
 namespace Tozaroq.Infrastructure.Models
 {
-    public class IdentityUser : PersistentEntity
+    public class IdentityUser : BaseEntity
     {
         [Required]
         public string PhoneNumber { get; set; }
