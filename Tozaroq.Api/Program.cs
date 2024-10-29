@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using Tozaroq.Api.Data;
 
 namespace Tozaroq.Api
 {
@@ -7,16 +9,18 @@ namespace Tozaroq.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+          
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            string postgreConnectionString = builder.Configuration.GetConnectionString("POSTGRES");
+            builder.Services.AddDbContext<TozaroqDbContext>(o => o.UseNpgsql(postgreConnectionString));
+
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
