@@ -9,6 +9,12 @@ namespace Tozaroq.Infrastructure.Models.Base
     public abstract class PersistentEntity : BaseEntity
     {
         [Required]
-        public EntityState State { get; set; } = EntityState.Active;
+        public EntityState State { get; private set; } = EntityState.Active;
+
+        public void Delete() 
+        {
+            State = EntityState.Deleted;
+            Update();
+        }
     }
 }
